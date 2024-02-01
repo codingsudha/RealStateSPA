@@ -11,12 +11,12 @@ export class HousingService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProperties():Observable<IProperty[]> {
+  getAllProperties(SellRent?: number):Observable<IProperty[]> {
     return this.http.get('data/property.json').pipe(
       map(data  => {
         const propertiesArray: Array<IProperty> = [];
         for (var id in data) {
-          if (data.hasOwnProperty(id)) {
+          if (data.hasOwnProperty(id) && (data as any)[id].SellRent === SellRent) {
             console.warn('id', id)
             console.log('Reached Here.')
             //console.warn((data as IProperty)[id])
