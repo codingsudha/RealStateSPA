@@ -8,16 +8,20 @@ import { PropertyListComponent } from './property/property-list/property-list.co
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import {Routes,RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 const appRoutes: Routes =[
   {path:'',component: PropertyListComponent},
   {path:'rent-property',component: PropertyListComponent},
   {path:'add-property',component: AddPropertyComponent},
+  {path:'user-login',component: UserLoginComponent},
+  {path:'user-register',component: UserRegisterComponent},
   {path:'property-detail/:Id',component: PropertyDetailComponent},
   {path:'**',component: PropertyListComponent} //TODo: page not found component
 ];
@@ -29,12 +33,15 @@ const appRoutes: Routes =[
     PropertyListComponent,
     NavBarComponent,
     AddPropertyComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    UserRegisterComponent,
+    UserLoginComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
